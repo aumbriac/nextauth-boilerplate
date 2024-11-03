@@ -1,7 +1,7 @@
-export default function Code(props) {
+export default function Code({ children }) {
   return (
-    <code className="bg-gray-100 px-2 py-1 rounded text-pink-600 font-mono">
-      {props.children}
+    <code className="bg-gray-900 px-2 py-1 rounded text-green-600 font-mono">
+      {children}
     </code>
   );
 }

@@ -3,6 +3,9 @@ import { getProviders } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { SignInButton } from "@/app/components/Buttons";
 import Loader from "@/app/components/Loader";
+import Card from "@/app/components/Card";
+import CardTitle from "@/app/components/CardTitle";
+import { withAuth } from "@/app/components/withAuth";
 
 type Provider = {
   id: string;
@@ -13,7 +16,7 @@ type SignInProps = {
   providers: Record<string, Provider>;
 };
 
-const SignUp = () => {
+const SignIn = () => {
   const [providers, setProviders] = useState<SignInProps["providers"] | null>(
     null
   );
@@ -46,31 +49,26 @@ const SignUp = () => {
   }
 
   if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-900 text-red-500">
-        {error}
-      </div>
-    );
+    return error;
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="p-12 bg-black shadow-lg rounded-lg">
-        {providers && Object.values(providers).length > 0 ? (
-          Object.values(providers).map((provider) => (
-            <div key={provider.name} className="mb-4">
-              <SignInButton
-                providerId={provider.id}
-                providerName={provider.name}
-              />
-            </div>
-          ))
-        ) : (
-          <div className="text-white">No sign-in providers available.</div>
-        )}
-      </div>
-    </div>
+    <Card>
+      <CardTitle>Next 15 NextAuth Boilerplate</CardTitle>
+      {providers && Object.values(providers).length > 0 ? (
+        Object.values(providers).map((provider) => (
+          <div key={provider.name}>
+            <SignInButton
+              providerId={provider.id}
+              providerName={provider.name}
+            />
+          </div>
+        ))
+      ) : (
+        <div className="text-stone-300">No sign-in providers available.</div>
+      )}
+    </Card>
   );
 };
 
-export default SignUp;
+export default withAuth(SignIn);

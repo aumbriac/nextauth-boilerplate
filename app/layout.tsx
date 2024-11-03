@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-screen flex items-center justify-center bg-black">
         <Suspense fallback={<Loader />}>
           <Providers>{children}</Providers>
         </Suspense>

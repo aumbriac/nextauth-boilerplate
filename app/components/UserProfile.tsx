@@ -1,21 +1,19 @@
 import Image from "next/image";
+import CardText from "@/app/components/CardText";
+import CardTitle from "@/app/components/CardTitle";
 
 export default function UserProfile({ session }) {
   return (
     <>
+      <CardTitle>Welcome, {session.user?.name}!</CardTitle>
       <Image
         alt={session.user?.name!}
         src={session.user?.image!}
-        height={50}
-        width={50}
-        className="rounded-full mb-4 mx-auto"
+        height={80}
+        width={80}
+        className="rounded-lg mx-auto border-2 border-stone-800 shadow-md mb-4"
       />
-      <h1 className="text-xl font-bold mb-2 text-center text-black">
-        Welcome, {session.user?.name}!
-      </h1>
-      <p className="text-center mb-4 text-gray-600">
-        Authenticated as {session.user?.email}
-      </p>
+      <CardText>You are authenticated as {session.user?.email}.</CardText>
     </>
   );
 }
