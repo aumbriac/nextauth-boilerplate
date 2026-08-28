@@ -1,7 +1,5 @@
 # NextAuth Boilerplate
 
-[https://nextauth-boilerplate-kappa.vercel.app](https://nextauth-boilerplate-kappa.vercel.app)
-
 A simple Next.js authentication boilerplate using NextAuth.js, TypeScript, and MongoDB that uses Google and GitHub as default auth providers.
 
 ## Prerequisites
